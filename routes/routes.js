@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const tbnRoutes = require('./tbn.route');
+const authRoutes = require('./authentications.route');
+const coRoutes = require('./cashout.route');
 
-router.use('/remittance', tbnRoutes);
+router.use('/remittance', coRoutes);
+router.use('/auths', authRoutes);
 module.exports = router;
