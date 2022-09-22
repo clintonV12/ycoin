@@ -23,6 +23,10 @@ const Authentication = db.define('Authentication', {
       type: Sequelize.STRING,
       allowNull: false
     }
+    ,wallet_address: {
+      type: Sequelize.STRING,
+      allowNull: true
+    }
   }, {
     // Other model options go here
     tableName: 'users',

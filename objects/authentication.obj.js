@@ -40,7 +40,8 @@ function updateAuthentication(authentication, id) {
         user_id: authentication.user_id,
         username: authentication.username,
         email: authentication.email,
-        password: authentication.password
+        password: authentication.password,
+        wallet_address: authentication.wallet_address
     };
     return Authentication.update(updateAuthentication, { where: { id: id } });
 }

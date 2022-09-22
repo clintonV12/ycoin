@@ -99,7 +99,8 @@ async function login(req, res) {
             user_id     : user.id, 
             username    : user.username, 
             phone       : user.phone,
-            email       : user.email
+            email       : user.email,
+            wallet_address: user.wallet_address
         });
     } 
     else {
