@@ -60,7 +60,7 @@ function localCurrencyToRand(currencySymbol,amount){
 //"apiKey": "dc302ff08bee4a2aaf146e640df352e2"
 //authorization: Basic YzcyNzc3ZjUtNWNkMS00NjMwLTk5ZTQtOGJhNDcyMmZhZDU4OmRjMzAyZmYwOGJlZTRhMmFhZjE0NmU2NDBkZjM1MmUy
 
-function createAccessToken(){
+function createAccessToken(req, res){
     let token = null;
     let token_type = null;
     let expires_in = 0;
@@ -83,6 +83,7 @@ function createAccessToken(){
       axios(config)
       .then(function (response) {
         token = response.data.access_token;
+        res.send(response.data);
       })
       .catch(function (error) {
         res.status(401).send(error.data);

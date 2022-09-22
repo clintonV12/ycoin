@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 22, 2022 at 05:31 AM
+-- Generation Time: Sep 22, 2022 at 06:41 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(40) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `wallet_address` varchar(200) DEFAULT NULL,
+  `wallet_address` varchar(200) DEFAULT '0x',
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -43,30 +43,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `wallet_address`, `createdAt`, `updatedAt`) VALUES
-(1, 'clinton', '$2b$10$0y4jfuqoGeFIFJFEVucEFuExF.UCYaWUxg8vphEy2q0DdMnuNbZLu', 'vilakaticlinton@gmail.com', '78679654', NULL, '2022-09-20 21:15:56', '2022-09-20 21:15:56');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wp_authentications`
---
-
-CREATE TABLE `wp_authentications` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `wp_authentications`
---
-
-INSERT INTO `wp_authentications` (`id`, `username`, `email`, `password`, `phone`, `createdAt`, `updatedAt`) VALUES
-(1, 'clinton', 'vilakaticlinton@gmail.com', '$2b$10$q27j22z2vlEuCtsKhrG5A.fxdclCz/Lf.5smhHEPeyxYrC1z3njMK', '78679654', '2022-09-20 21:14:59', '2022-09-20 21:14:59');
+(1, 'clinton', '$2b$10$0y4jfuqoGeFIFJFEVucEFuExF.UCYaWUxg8vphEy2q0DdMnuNbZLu', 'vilakaticlinton@gmail.com', '78679654', '0x', '2022-09-22 14:30:50', '2022-09-20 21:15:56'),
+(3, 'very', '$2b$10$ALe0Xm/FEFt9HYknlhF5sOVzBQjYdPIGrtb.u3EQkI2mv.i6dl4Vm', 'sfg', '364635', '0x', '2022-09-22 14:30:50', '2022-09-22 05:38:16');
 
 --
 -- Indexes for dumped tables
@@ -79,12 +57,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `wp_authentications`
---
-ALTER TABLE `wp_authentications`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -92,13 +64,7 @@ ALTER TABLE `wp_authentications`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `wp_authentications`
---
-ALTER TABLE `wp_authentications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
