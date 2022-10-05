@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { v4: uuidv4 } = require('uuid');
-
+const tokenObj = require('../objects/AccessToken.obj');
 //TODO::get phone number value
 var userPhone = 78679654;
 
@@ -92,8 +92,11 @@ function createAccessToken(req, res){
     return token;
 }
 
-function getReserveBalance(req, res){
-    let token = req.body.token;
+async function getReserveBalance(req, res){
+    tkn = await tokenObj.findToken();
+
+    let token               = tkn.token;
+    //let token = req.body.token;
 
     let data = JSON.stringify({"providerCallbackHost":"ycoin.com"});
     let config = {
@@ -120,11 +123,14 @@ function getReserveBalance(req, res){
     });
 }
 
-function transferToUserAccount(req, res){
+async function transferToUserAccount(req, res){
+    tkn = await tokenObj.findToken();
+    let token               = tkn.token;
+
     let amount    = req.body.amount; 
     let currency  = req.body.currency; 
     let userPhone = req.body.userPhone; 
-    let token     = req.body.token;
+    //let token     = req.body.token;
     let refID     = uuidv4();
 
     var data = `{\n  "amount": ${amount},\n  
@@ -184,8 +190,10 @@ function getTransferStatus(token,refID,res){
 
 }
 
-function validateAccountHolder(req, res){
-    let token               = req.body.token;
+async function validateAccountHolder(req, res){
+    tkn = await tokenObj.findToken();
+
+    let token               = tkn.token;
     let accountHolderIdType = req.body.accountHolderIdType;
     let accountHolderId     = req.body.accountHolderId;
     /*accountHolderIdType - Specifies the type of the party id. Allowed values [msisdn, email, party_code].*/
