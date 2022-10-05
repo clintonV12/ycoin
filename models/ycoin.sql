@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 05, 2022 at 07:25 AM
+-- Generation Time: Oct 05, 2022 at 01:59 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `ycoin`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `access_token`
+--
+
+CREATE TABLE `access_token` (
+  `id` int(11) NOT NULL,
+  `token` text NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `access_token`
+--
+
+INSERT INTO `access_token` (`id`, `token`, `createdAt`, `updatedAt`) VALUES
+(1, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSMjU2In0.eyJjbGllbnRJZCI6ImM3Mjc3N2Y1LTVjZDEtNDYzMC05OWU0LThiYTQ3MjJmYWQ1OCIsImV4cGlyZXMiOiIyMDIyLTEwLTA1VDA3OjAwOjQ2LjUyNyIsInNlc3Npb25JZCI6IjZjY2VjNzQzLWUyZjUtNDI1Zi1hYjk0LWFiOTc1YTM1ZTVkNCJ9.YxiMxQGHB6oa8N9VkPr5jkw2Q7QwothnAj3e7up9RRjebC-h6AqKGWk7FQKYrzOcM1DeI3rTMSUpnt3WjvkcZmsdHTp0K5-aj8XSY40dHvpmF8JQbVRbWK0nK6UZCoCICfjQIsMwKOaHgKfspQWql0AD7rcC8Jp1akFTAeuFV3cpzteG9GxF6QuZlcraB5NP_h_z85SEitAofYOaIkICG-WsZzWBL0whrcvy5xLuNXl4AEJ-PG11WPgOapYEbGKz-KoQxP626AAbyZ5hLB6AvSQOpYBffJcznku3_O0qJivAQ-kE21kL6U84wwmEvTdSpFZhiPq9OToNuRlTYB7-5g', '2022-10-05 11:57:47', '2022-10-05 11:57:47');
 
 -- --------------------------------------------------------
 
@@ -114,6 +134,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `wallet_add
 --
 
 --
+-- Indexes for table `access_token`
+--
+ALTER TABLE `access_token`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `bc_sim_master_accounts`
 --
 ALTER TABLE `bc_sim_master_accounts`
@@ -134,6 +160,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `access_token`
+--
+ALTER TABLE `access_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bc_sim_master_accounts`
