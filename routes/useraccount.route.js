@@ -6,7 +6,7 @@ router.post('/', uaController.addUserAccount);
 router.get('/', uaController.findUserAccounts);
 router.get('/:id', uaController.findUserAccountById);
 router.get('/accounts/:phone', uaController.findUserAccountByPhone);
-router.put('/:id', uaController.updateUserAccount);
+router.put('/:phone', uaController.updateUserAccount);
 router.delete('/:id', uaController.deleteById);
 
 

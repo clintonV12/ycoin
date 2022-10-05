@@ -12,7 +12,6 @@ var uaController = {
 async function addUserAccount(req, res) {
     
     let UserAccount = req.body;
-
     uaObj.create(UserAccount).
         then((data) => {
             res.send(data);
@@ -60,7 +59,7 @@ async function updateUserAccount(req, res) {
     
     let UserAccount = req.body;
     
-    uaObj.updateUserAccount(UserAccount, req.params.id).
+    uaObj.updateUserAccount(UserAccount, req.params.phone).
         then((data) => {
             res.status(200).json({
                 message: "UserAccount updated successfully",

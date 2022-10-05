@@ -1,4 +1,6 @@
 const authObj = require('../objects/authentication.obj');
+const UserAccount = require('../models/UserAccount');
+const uaObj = require('../objects/UserAccount.obj');
 const bcrypt = require ('bcrypt');
 const saltRounds = 10;
 
@@ -19,6 +21,18 @@ async function addAuthentication(req, res) {
 
     authObj.create(authentication).
         then((data) => {
+            
+            let UserAccount = {phone: data.phone,y_balance:0.00,wallet_address:data.wallet_address};
+
+            uaObj.create(UserAccount).
+                then((data) => {
+                    
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.status(401).send("Error creating account");
+                });
+
             res.send(data);
         })
         .catch((error) => {

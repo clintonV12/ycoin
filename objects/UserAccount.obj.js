@@ -6,7 +6,8 @@ var UserAccountObj = {
     findById: findById,
     findByPhone: findByPhone,
     deleteById: deleteById,
-    updateUserAccount: updateUserAccount,   
+    updateUserAccount: updateUserAccount,
+       
 }
 
 function findAll() {
@@ -30,12 +31,12 @@ function create(userAccount) {
     return newUserAccount.save();
 }
 
-function updateUserAccount(userAccount, id) {
+function updateUserAccount(userAccount, phone) {
     var updateUserAccount = {
         y_balance: userAccount.y_balance,
         phone: userAccount.phone,
         wallet_address: userAccount.wallet_address
     };
-    return UserAccount.update(updateUserAccount, { where: { id: id } });
+    return UserAccount.update(updateUserAccount, { where: { phone: phone } });
 }
 module.exports = UserAccountObj;
