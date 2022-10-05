@@ -7,7 +7,7 @@ var UserAccountObj = {
     findByPhone: findByPhone,
     deleteById: deleteById,
     updateUserAccount: updateUserAccount,
-       
+    transferYcoin:transferYcoin,
 }
 
 function findAll() {
@@ -39,4 +39,26 @@ function updateUserAccount(userAccount, phone) {
     };
     return UserAccount.update(updateUserAccount, { where: { phone: phone } });
 }
+
+async function transferYcoin(senderPhone,receiverPhone,amount) {
+    
+    sAccount = await UserAccount.findOne({ where: { phone: senderPhone} }); 
+    rAccount = await UserAccount.findOne({ where: { phone: receiverPhone} });
+
+    if(sAccount.y_balance >= amount && rAccount.phone != null && senderPhone != receiverPhone){
+        let newReceiverBalance = rAccount.y_balance + amount;
+        let newSenderBalance   = sAccount.y_balance - amount;
+
+        let senderAccount = {y_balance:newSenderBalance,phone:senderPhone,wallet_address:sAccount.wallet_address}
+        let receiverAccount = {y_balance:newReceiverBalance,phone:receiverPhone,wallet_address:rAccount.wallet_address} 
+    
+        UserAccount.update(senderAccount, { where: { phone: senderPhone } });
+        return UserAccount.update(receiverAccount, { where: { phone: receiverPhone } });
+    }else{
+        //cant transfer
+        return "Insufficient funds";
+    }
+}
+
+
 module.exports = UserAccountObj;

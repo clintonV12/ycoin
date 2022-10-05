@@ -7,6 +7,7 @@ var uaController = {
     findUserAccountByPhone: findUserAccountByPhone,
     updateUserAccount: updateUserAccount,
     deleteById: deleteById,
+    transfer:transfer,
 }
 
 async function addUserAccount(req, res) {
@@ -80,6 +81,20 @@ function findUserAccounts(req, res) {
             console.log(error);
         });
 }
+
+function transfer(req,res){
+    console.log(req.body.senderPhone);
+
+    uaObj.transferYcoin(req.body.senderPhone,req.body.receiverPhone,req.body.amount).
+    then((data) => {
+        res.send(data);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(401).send("Unknown error occured, might be invalid phone number");
+    });
+}
+
 
 
 

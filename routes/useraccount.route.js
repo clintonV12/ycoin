@@ -3,6 +3,7 @@ const router = express.Router();
 const uaController = require('../controller/useraccount.controller');
 
 router.post('/', uaController.addUserAccount);
+router.post('/transfer', uaController.transfer);
 router.get('/', uaController.findUserAccounts);
 router.get('/:id', uaController.findUserAccountById);
 router.get('/accounts/:phone', uaController.findUserAccountByPhone);
